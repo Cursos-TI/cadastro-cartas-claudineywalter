@@ -2,7 +2,8 @@
 
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das cartas
-// Objetivo: No nível novato você deve criar as cartas representando as cidades utilizando scanf para entrada de dados e printf para exibir as informações.
+// Nível Aventureiro: Adição de Densidade Populacional e PIB per Capita
+// Correção: Uso de getchar() para limpar o buffer do teclado.
 
 int main() {
     // Variáveis da Carta 1
@@ -13,6 +14,8 @@ int main() {
     float area1;
     float pib1;
     int pontos_turisticos1;
+    float densidade_populacional1;
+    float pib_per_capita1;
 
     // Variáveis da Carta 2
     char estado2;
@@ -22,6 +25,8 @@ int main() {
     float area2;
     float pib2;
     int pontos_turisticos2;
+    float densidade_populacional2;
+    float pib_per_capita2;
 
     // ==========================================
     // Área para entrada de dados
@@ -35,8 +40,11 @@ int main() {
     printf("Digite o Código da Carta (ex: A01): ");
     scanf("%s", codigo1);
     
+    // Limpa o "Enter" do buffer para não pular a leitura do nome da cidade
+    getchar(); 
+    
     printf("Digite o Nome da Cidade: ");
-    scanf(" %[^\n]", nome1); 
+    scanf("%[^\n]", nome1); 
     
     printf("Digite a População (numero inteiro): ");
     scanf("%d", &populacao1);
@@ -50,6 +58,10 @@ int main() {
     printf("Digite o Número de Pontos Turísticos: ");
     scanf("%d", &pontos_turisticos1);
 
+    // Cálculos da Carta 1
+    densidade_populacional1 = (float) populacao1 / area1;
+    pib_per_capita1 = (pib1 * 1000000000.0) / (float) populacao1;
+
 
     printf("\n--- Cadastro da Carta 2 ---\n");
     
@@ -59,8 +71,11 @@ int main() {
     printf("Digite o Código da Carta (ex: B02): ");
     scanf("%s", codigo2);
     
+    // Limpa o "Enter" do buffer novamente
+    getchar(); 
+    
     printf("Digite o Nome da Cidade: ");
-    scanf(" %[^\n]", nome2);
+    scanf("%[^\n]", nome2);
     
     printf("Digite a População (numero inteiro): ");
     scanf("%d", &populacao2);
@@ -74,12 +89,16 @@ int main() {
     printf("Digite o Número de Pontos Turísticos: ");
     scanf("%d", &pontos_turisticos2);
 
+    // Cálculos da Carta 2
+    densidade_populacional2 = (float) populacao2 / area2;
+    pib_per_capita2 = (pib2 * 1000000000.0) / (float) populacao2;
+
     // ==========================================
     // Área para exibição dos dados da cidade
     // ==========================================
 
     printf("\n==========================================\n");
-    printf("DADOS CADASTRADOS COM SUCESSO!\n");
+    printf("DADOS CADASTRADOS E CALCULADOS COM SUCESSO!\n");
     printf("==========================================\n\n");
 
     // Exibição da Carta 1
@@ -91,6 +110,8 @@ int main() {
     printf("Área: %.2f km²\n", area1);
     printf("PIB: %.2f bilhões de reais\n", pib1);
     printf("Número de Pontos Turísticos: %d\n", pontos_turisticos1);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade_populacional1);
+    printf("PIB per Capita: %.2f reais\n", pib_per_capita1);
 
     printf("\n"); // Linha em branco para separar as cartas
 
@@ -103,6 +124,8 @@ int main() {
     printf("Área: %.2f km²\n", area2);
     printf("PIB: %.2f bilhões de reais\n", pib2);
     printf("Número de Pontos Turísticos: %d\n", pontos_turisticos2);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade_populacional2);
+    printf("PIB per Capita: %.2f reais\n", pib_per_capita2);
     
     printf("\n==========================================\n");
 
